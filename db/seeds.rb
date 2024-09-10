@@ -20,6 +20,10 @@ User.create(username: "hendro",
             password: "password",
             password_confirmation: "password")
 
+%w[Politic International Crime Education].each do |room_name|
+  Room.create(name: room_name)
+end
+
 40.times do
   Message.create(
     body: Faker::Lorem.sentence(word_count: 10),

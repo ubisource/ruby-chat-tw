@@ -7,3 +7,22 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+User.create(username: "ruby",
+            email: "ubiruby@gmail.com",
+            password: "password",
+            password_confirmation: "password")
+User.create(username: "jaya",
+            email: "jaya@localhost.com",
+            password: "password",
+            password_confirmation: "password")
+User.create(username: "hendro",
+            email: "hendro@localhost.com",
+            password: "password",
+            password_confirmation: "password")
+
+40.times do
+  Message.create(
+    body: Faker::Lorem.sentence(word_count: 10),
+    user_id: rand(1..3),
+  )
+end

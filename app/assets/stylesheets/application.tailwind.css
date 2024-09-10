@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --themeColorMain: #16423C;
+    --themeColorSecondary: #6A9C89;
+}
+
+* {
+    background-color: #999999;
+    color: #EFEFEF;
+}

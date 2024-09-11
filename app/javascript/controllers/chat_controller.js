@@ -5,20 +5,21 @@ export default class extends Controller {
     static values = {currentUserId: String}
 
     connect() {
-        this.setupScrollListener();
-        this.setupMessageListener();
+        console.log('connected')
+        this.setupScrollListener()
+        this.setupMessageListener()
     }
 
     disconnect() {
-        this.scrollObserver.disconnect();
-        this.messageObserver.disconnect();
+        this.scrollObserver.disconnect()
+        this.messageObserver.disconnect()
     }
 
     setupScrollListener() {
-        this.scrollToBottom();
+        this.scrollToBottom()
 
         this.scrollObserver = new MutationObserver(() => {
-            this.scrollToBottom();
+            this.scrollToBottom()
         })
 
         this.scrollObserver.observe(this.element, {
@@ -28,11 +29,11 @@ export default class extends Controller {
     }
 
     setupMessageListener() {
-        this.styleExistingMessages();
+        this.styleExistingMessages()
 
         this.messageObserver = new MutationObserver((mutations) => {
-            this.styleAddedNodes(mutations);
-        });
+            this.styleAddedNodes(mutations)
+        })
 
         this.messageObserver.observe(this.element, {
             childList: true,
@@ -54,7 +55,7 @@ export default class extends Controller {
         mutations.forEach((mutation) => {
             mutation.addedNodes.forEach((node) => {
                 if (node.nodeType === 1) {
-                    this.styleMessage(node);
+                    this.styleMessage(node)
                 }
             })
         })
@@ -64,8 +65,8 @@ export default class extends Controller {
         let messageNode = this.getMessageNode(node)
         if (!messageNode) return
 
-        const userId = messageNode.dataset.userId;
-        const messageBody = messageNode.querySelector('.message__body');
+        const userId = messageNode.dataset.userId
+        const messageBody = messageNode.querySelector('.message__body')
 
         this.applyStyle(userId, messageBody)
     }

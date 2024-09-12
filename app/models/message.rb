@@ -7,7 +7,7 @@ class Message < ApplicationRecord
 
   def broadcast_create
     broadcast_append_to "messages",
-                        partial: "messages/message",
+                        partial: "pages/message",
                         locals: { message: self, display_controls: false }
 
     broadcast_replace_to "user_#{self.user.id}",

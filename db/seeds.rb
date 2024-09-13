@@ -35,10 +35,10 @@ rooms = Room.create([
                       { name: 'Sports' },
                     ])
 
-40.times do
+50.times do
   Message.create(
     body: Faker::Lorem.sentence(word_count: 10),
-    user: users.sample,
-    room: rooms.sample,
+    user_id: rand(1..3),
+    room_id: rand(1..4)
   )
 end

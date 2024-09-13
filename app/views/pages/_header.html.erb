@@ -2,7 +2,7 @@
   <div class="font-semibold text-2xl">Chat</div>
 
   <%= turbo_frame_tag "roomTitle" do %>
-    <span>Title</span>
+    <span><%= @current_room.name %></span>
   <% end %>
 
   <% if current_user %>

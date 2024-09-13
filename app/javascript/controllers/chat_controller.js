@@ -5,7 +5,7 @@ export default class extends Controller {
     static values = {currentUserId: String}
 
     connect() {
-        console.log('connected')
+        console.log('chat_controller connected')
         this.setupScrollListener()
         this.setupMessageListener()
     }

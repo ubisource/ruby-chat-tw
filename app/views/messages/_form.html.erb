@@ -1,5 +1,6 @@
 <%= form_with(
-      model: message,
+      model: [@current_room, @message],
+      # url: room_messages_path(@current_room),
       id: "message_form",
       method: :post,
       data: {

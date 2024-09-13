@@ -3,19 +3,32 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
-    @current_room = Room.first
-    @messages = @current_room.messages if @current_room
-    @message = Message.new
+  end
+
+  def create
+    @room = Room.new(room_params)
+    if @room.save
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to pages_home_path }
+      end
+    else
+      render :index
+    end
   end
 
   def show
-    @rooms = Room.all
-    @current_room = Room.find params[:id]
+    @current_room = Room.find(params[:id])
     @messages = @current_room.messages
-    @message = Message.new
     respond_to do |format|
-      format.turbo_stream
-      format.html { render :index }
+      format.html
+      format.turbo_stream # This is necessary for Turbo Frame updates
     end
+  end
+
+  private
+
+  def room_params
+    params.require(:room).permit(:name)
   end
 end

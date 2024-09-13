@@ -18,8 +18,8 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @current_room = Room.find(params[:id])
-    @messages = @current_room.messages
+    @room = Room.find(params[:id])
+    @messages = @room.messages
     respond_to do |format|
       format.html
       format.turbo_stream # This is necessary for Turbo Frame updates

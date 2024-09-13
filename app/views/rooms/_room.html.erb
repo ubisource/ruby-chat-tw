@@ -1,7 +1,8 @@
-<div class="flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:bg-blue-400 active:bg-blue-500 focus:outline-none"
-     id=<%= room.id %>>
-  <div class="w-full">
-    <div class="text-lg font-semibold"><%= room.name %></div>
-    <span class="text-gray-500">Pick me at 9:00 Am</span>
-  </div>
+<div class="flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:bg-blue-400 active:bg-blue-500 focus:outline-none">
+  <%= link_to room_messages_path(room), data: { turbo_frame: 'messages' }, class: 'w-full flex items-center' do %>
+    <div class="w-full">
+      <div class="text-lg font-semibold"><%= room.name %></div>
+      <span class="text-gray-500">Pick me at 9:00 Am</span>
+    </div>
+  <% end %>
 </div>

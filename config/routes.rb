@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root "pages#home"
-  resources :messages, only: [:create, :destroy]
+  get "rooms/index"
+  get "rooms/show"
+  resources :rooms, only: [:index, :show] do
+    resources :messages, only: [:index, :create]
+  end
+  # resources :messages, only: [:create, :destroy]
   devise_for :users, controllers: {
     registrations: "users/registrations",
   }
@@ -15,5 +19,5 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "rooms#index"
 end

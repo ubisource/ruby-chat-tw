@@ -9,20 +9,20 @@
 #   end
 users = User.create([
                       {
-                        username: "ruby",
-                        email: "ubiruby@gmail.com",
+                        username: "demo",
+                        email: "demo@localhost.com",
                         password: "password",
                         password_confirmation: "password"
                       },
                       {
-                        username: "jaya",
-                        email: "jaya@localhost.com",
+                        username: "demo1",
+                        email: "demo1@localhost.com",
                         password: "password",
                         password_confirmation: "password"
                       },
                       {
-                        username: "hendro",
-                        email: "hendro@localhost.com",
+                        username: "demo2",
+                        email: "demo2@localhost.com",
                         password: "password",
                         password_confirmation: "password"
                       }

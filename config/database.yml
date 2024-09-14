@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: ruby_chat_tw_production
-  username: ruby_chat_tw
+  username: ruby
   password: <%= ENV["RUBY_CHAT_TW_DATABASE_PASSWORD"] %>

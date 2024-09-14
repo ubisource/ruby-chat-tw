@@ -9,6 +9,7 @@ services:
     name: ruby_chat_tw
     runtime: ruby
     plan: free
+    region: singapore
     buildCommand: "./bin/render-build.sh"
     # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
     startCommand: "bundle exec rails server"

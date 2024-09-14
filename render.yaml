@@ -3,6 +3,7 @@ databases:
     databaseName: ruby_chat_tw
     user: ruby
     plan: free
+    region: singapore
 
 services:
   - type: web

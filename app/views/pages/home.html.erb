@@ -3,7 +3,7 @@
   <div class="flex flex-row justify-between bg-white h-[calc(100vh-74px)]">
     <%= render template: 'rooms/index' %>
 
-    <%= turbo_frame_tag 'messages', class: "w-full px-5 flex flex-col justify-between" do %>
+    <%= turbo_frame_tag 'messages_frame', class: "w-full px-5 flex flex-col justify-between" do %>
       <div class="w-full px-5 flex flex-col justify-between">
         <p class="text-center text-gray-500">Please select a room to load messages</p>
       </div>

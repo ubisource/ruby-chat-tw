@@ -3,9 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @rooms = Room.all
-    @current_room = Room.first
-    @new_room = Room.new
-    @messages = @current_room.messages if @current_room
+    @room = Room.new
     @message = Message.new
   end
 end

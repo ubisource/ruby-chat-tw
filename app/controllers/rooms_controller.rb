@@ -1,28 +1,24 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @rooms = Room.all
-  end
-
   def create
     @room = Room.new(room_params)
     if @room.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to pages_home_path }
+        format.html { redirect_to pages_home_path, notice: 'Room was successfully created.' }
       end
     else
       render :index
     end
   end
 
-  def show
+  def destroy
     @room = Room.find(params[:id])
-    @messages = @room.messages
+    @room.destroy
     respond_to do |format|
-      format.html
-      format.turbo_stream # This is necessary for Turbo Frame updates
+      format.turbo_stream
+      format.html { redirect_to pages_home_path, notice: 'Room was successfully deleted.' }
     end
   end
 

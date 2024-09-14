@@ -1,8 +1,13 @@
-<div class="flex flex-row py-4 px-2 justify-center items-center border-b-2 hover:bg-blue-400 active:bg-blue-500 focus:outline-none">
-  <%= link_to room_messages_path(room), data: { turbo_frame: 'messages' }, class: 'w-full flex items-center' do %>
-    <div class="w-full">
+<%= turbo_frame_tag dom_id(room) do %>
+  <div class="flex py-4 px-2 justify-between border border-b2 hover:bg-blue-400 active:bg-blue-500 focus:outline-none">
+    <%= link_to room_messages_path(room),
+                id: "room_#{room.id}",
+                data: { turbo_frame: 'messages_frame' },
+                class: 'w-full flex flex-col items-start' do %>
       <div class="text-lg font-semibold"><%= room.name %></div>
-      <span class="text-gray-500">Pick me at 9:00 Am</span>
-    </div>
-  <% end %>
-</div>
+      <span class="text-gray-500">Room ID: <%= room.id %></span>
+    <% end %>
+
+    <%#= render partial: "rooms/action", locals: { room: room } %>
+  </div>
+<% end %>

@@ -1,8 +1,8 @@
 <div class="px-5 py-5 flex justify-between items-center bg-white border-b-2">
   <div class="font-semibold text-2xl">Chat</div>
 
-  <%= turbo_frame_tag "roomTitle" do %>
-    <span><%= @current_room.name %></span>
+  <%= turbo_stream_from "rooms" do %>
+    <span><%= @room.name %></span>
   <% end %>
 
   <% if current_user %>

@@ -7,12 +7,10 @@ export default class extends Controller {
     connect() {
         console.log('chat_controller connected')
         this.setupScrollListener()
-        this.setupMessageListener()
     }
 
     disconnect() {
         this.scrollObserver.disconnect()
-        this.messageObserver.disconnect()
     }
 
     setupScrollListener() {
@@ -28,62 +26,7 @@ export default class extends Controller {
         })
     }
 
-    setupMessageListener() {
-        this.styleExistingMessages()
-
-        this.messageObserver = new MutationObserver((mutations) => {
-            this.styleAddedNodes(mutations)
-        })
-
-        this.messageObserver.observe(this.element, {
-            childList: true,
-            subtree: true
-        })
-    }
-
     scrollToBottom() {
         this.element.scrollTop = this.element.scrollHeight
-    }
-
-    styleExistingMessages() {
-        this.element.querySelectorAll('.message').forEach((message) => {
-            this.styleMessage(message)
-        })
-    }
-
-    styleAddedNodes(mutations) {
-        mutations.forEach((mutation) => {
-            mutation.addedNodes.forEach((node) => {
-                if (node.nodeType === 1) {
-                    this.styleMessage(node)
-                }
-            })
-        })
-    }
-
-    styleMessage(node) {
-        let messageNode = this.getMessageNode(node)
-        if (!messageNode) return
-
-        const userId = messageNode.dataset.userId
-        const messageBody = messageNode.querySelector('.message__body')
-
-        this.applyStyle(userId, messageBody)
-    }
-
-    getMessageNode(node) {
-        return node.closest('.message') || node.querySelector('.message')
-    }
-
-    applyStyle(userId, messageBody) {
-        if (userId === this.currentUserIdValue) {
-            messageBody.classList.add('bg-themeColorMain', 'text-textColorSecondary')
-        } else {
-            messageBody.classList.add(
-                'border',
-                'border-themeColorMain',
-                'text-textColorMain'
-            )
-        }
     }
 }

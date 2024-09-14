@@ -1,23 +1,14 @@
 class Message < ApplicationRecord
-  belongs_to :user, dependent: :destroy
-  belongs_to :room, dependent: :destroy
+  belongs_to :user
+  belongs_to :room
   validates :body, presence: true, length: { maximum: 500 }
 
-  # after_create_commit :broadcast_create
-  # after_destroy_commit :broadcast_destroy
+  after_create_commit :broadcast_create
 
-  # def broadcast_create
-  #   broadcast_append_to "messages",
-  #                       partial: "messages/message",
-  #                       locals: { message: self, display_controls: false }
-  #
-  #   broadcast_replace_to "user_#{self.user.id}",
-  #                        target: "message_#{self.id}_controls",
-  #                        partial: "messages/controls",
-  #                        locals: { message: self }
-  # end
-
-  # def broadcast_destroy
-  #   broadcast_remove_to "messages"
-  # end
+  def broadcast_create
+    puts "Broadcasting message to messages_room_#{self.room.id}"
+    broadcast_append_to "messages_room_#{self.room.id}",
+                        partial: "messages/message",
+                        locals: { message: self, user: self.user }
+  end
 end

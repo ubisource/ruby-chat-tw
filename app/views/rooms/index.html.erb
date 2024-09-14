@@ -1,7 +1,8 @@
 <div class="flex flex-col w-2/5 border-r-2 overflow-y-auto">
   <%= render "rooms/form" %>
 
-  <%= turbo_frame_tag "rooms" do %>
+  <%= turbo_stream_from "rooms" %>
+  <div id="rooms">
     <%= render @rooms %>
-  <% end %>
+  </div>
 </div>

@@ -1,0 +1,8 @@
+<%= link_to room_path(room),
+            method: :delete,
+            data: { confirm: 'Are you sure you want to delete this message?' },
+            class: 'text-red-500 hover:text-red-700' do %>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 4V5H18V4H6ZM6 6V18C6 18.5523 6.44772 19 7 19H17C17.5523 19 18 18.5523 18 18V6H6ZM8 8H10V16H8V8ZM14 8H16V16H14V8ZM8 4V3C8 2.44772 8.44772 2 9 2H15C15.5523 2 16 2.44772 16 3V4H17C17.5523 4 18 4.44772 18 5V6H6V5C6 4.44772 6.44772 4 7 4H8Z" fill="#000"/>
+  </svg>
+<% end %>
